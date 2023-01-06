@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include "langton.h"
 
-//enum direction { UP, DOWN, LEFT, RIGHT };
-//enum colour { WHITE, BLACK};
+struct ant ant1 = {10,15,RIGHT};
+enum colour start_colour = WHITE;
 
 int main(){
-    struct ant ant1 = {10,15,RIGHT};
-    enum colour start_colour = WHITE;
     //turn_left(&ant1);
     //turn_right(&ant1);
     //move_forward(&ant1);
@@ -66,9 +64,13 @@ void apply_rule(enum colour *colour, struct ant *ant){
     printf("colour = %d\n", *colour);
     if(*colour == 0){
         *colour = 1;
+        turn_left(&ant1);
+        //move_forward(&ant1);
     }
     else {
         *colour = 0;
+        turn_right(&ant1);
+        //move_forward(&ant1);
     }
     printf("switched colour = %d\n", *colour);
 }

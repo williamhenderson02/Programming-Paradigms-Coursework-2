@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <stdlib.h>
 #include "visualiser.h"
+#include "langton.h"
 
 #define cell_under_ant cell_at(ant->y, ant->x)
 cell *cells;

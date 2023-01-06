@@ -15,7 +15,8 @@ struct rule
     char* rules;
 };
 
-//#define ant_is_at(//TODO)
+#define ant_is_at(posy, posx)\
+    printf("y = %d x = %d", posy, posx)
 
 enum colour { WHITE, BLACK };
 
