@@ -8,6 +8,6 @@ enum colour start_colour = WHITE;
 
 int main (){
     printf("Hello \n");
-    apply_rule(&start_colour, &ant1);
+    //start_visualisation(&ant1);
     return 0;
 }

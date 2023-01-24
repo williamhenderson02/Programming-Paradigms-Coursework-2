@@ -1,13 +1,15 @@
 CC = gcc
 CFLAGS = -Wall
 LDFLAGS = -lncurses
-OBJFILES = langton.o visualiser.o
+OBJFILES = main.o langton.o visualiser.o
 TARGET = ant
+DEPS = langton.h visualiser.h
 
-all: $(TARGET)
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS) $(LDFLAGS)
 
 $(TARGET): $(OBJFILES)
-	$(CC) $(CFLAGS) -o $(TARGET) main.c $(OBJFILES) $(LDFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 clean:
 	rm -f $(OBJFILES) $(TARGET) *~
