@@ -7,11 +7,16 @@
 #define cell_under_ant cell_at(ant->y, ant->x)
 cell *cells;
 
+cell* cell_at(int y, int x) {
+    return &cells[y * max_x + x];
+}
+
+
 void start_visualisation(struct ant* ant) {
   setlocale(LC_ALL, "");
 
    initscr();
-   curs_set(FALSE);
+   curs_set(FALSE); 
    max_x = getmaxx(stdscr);
    max_y = getmaxy(stdscr);
    cells = calloc(max_y*max_x, sizeof(cell));
@@ -38,7 +43,7 @@ void visualise_and_advance(struct ant* ant) {
       refresh();
       
       /* Advance to next step */
-      apply_rule(&cell_under_ant, ant);
+      apply_rule(cell_under_ant, ant);
       move_forward(ant);
 }
 
