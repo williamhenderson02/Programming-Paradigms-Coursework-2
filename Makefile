@@ -7,7 +7,7 @@ TARGET = ant
 all: $(TARGET)
 
 $(TARGET): $(OBJFILES)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJFILES) $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(TARGET) main.c $(OBJFILES) $(LDFLAGS)
 
 clean:
 	rm -f $(OBJFILES) $(TARGET) *~
