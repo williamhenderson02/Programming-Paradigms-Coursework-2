@@ -8,7 +8,7 @@
 cell *cells;
 
 cell* cell_at(int y, int x) {
-    return &cells[y * max_x + x];
+   ;
 }
 
 
@@ -45,8 +45,9 @@ void visualise_and_advance(struct ant* ant) {
       
       /* Advance to next step */
       apply_rule(cell_under_ant, ant);
+      move_forward(ant);
 
-      if(ant->x < 0){
+       if(ant->x < 0){
          ant->x = max_x - 1;
       }
 
@@ -61,8 +62,6 @@ void visualise_and_advance(struct ant* ant) {
       if(ant->y == max_y){
          ant->y = 0;
       }
-
-      move_forward(ant);
 }
 
 // Check if the user has input "q" to quit
