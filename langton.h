@@ -15,8 +15,7 @@ struct rule
     char* rules;
 };
 
-#define ant_is_at(posy, posx)\
-    printf("y = %d x = %d", posy, posx)
+#define ant_is_at(posy, posx) ((ant->x == posx) && (ant->y == posy))
 
 enum colour { WHITE, BLACK };
 

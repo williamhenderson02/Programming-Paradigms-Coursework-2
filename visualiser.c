@@ -1,4 +1,4 @@
-#include <ncurses.h>
+#include <curses.h>
 #include <locale.h>
 #include <stdlib.h>
 #include "visualiser.h"
@@ -27,6 +27,7 @@ void start_visualisation(struct ant* ant) {
 
 void visualise_and_advance(struct ant* ant) {
       /* Draw cells and ant */
+      
       for (int y=0; y<max_y; y++)
       {
          for (int x=0; x<max_x; x++)
@@ -44,6 +45,23 @@ void visualise_and_advance(struct ant* ant) {
       
       /* Advance to next step */
       apply_rule(cell_under_ant, ant);
+
+      if(ant->x < 0){
+         ant->x = max_x - 1;
+      }
+
+      if(ant->y < 0){
+         ant->y = max_y - 1;
+      }
+
+      if(ant->x == max_x){
+         ant->x = 0;
+      }
+
+      if(ant->y == max_y){
+         ant->y = 0;
+      }
+
       move_forward(ant);
 }
 

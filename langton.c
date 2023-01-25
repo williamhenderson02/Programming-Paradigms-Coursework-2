@@ -13,7 +13,7 @@ int main(){
 }*/
 
 void turn_left(struct ant *ant){
-    printf("direction = %d\n",ant->direction);
+    //printf("direction = %d\n",ant->direction);
     if(ant->direction  == 0)
         ant->direction = 2;
     else if(ant->direction  == 1)
@@ -22,11 +22,11 @@ void turn_left(struct ant *ant){
         ant->direction = 1;
     else
         ant->direction = 0;
-    printf("direction = %d\n", ant->direction);
+    //printf("direction = %d\n", ant->direction);
 }
 
 void turn_right(struct ant *ant){
-    printf("direction = %d\n",ant->direction);
+    //printf("direction = %d\n",ant->direction);
     if(ant->direction  == 0){
         ant->direction = 3;
     }
@@ -39,11 +39,11 @@ void turn_right(struct ant *ant){
     else {
         ant->direction = 1;
     }
-    printf("direction = %d\n", ant->direction);
+    //printf("direction = %d\n", ant->direction);
 }
 
 void move_forward(struct ant *ant){
-    printf("x = %d y = %d\n", ant->x, ant->y);
+    //printf("x = %d y = %d\n", ant->x, ant->y);
     if(ant->direction == 0){
         ant->y += 1;
     }
@@ -56,23 +56,23 @@ void move_forward(struct ant *ant){
     else {
         ant->x += 1;
     }
-    printf("x = %d y = %d\n", ant->x, ant->y);
+    //printf("x = %d y = %d\n", ant->x, ant->y);
 }
 
 
 void apply_rule(enum colour *colour, struct ant *ant){
-    printf("colour = %d\n", *colour);
+    //printf("colour = %d\n", *colour);
     if(*colour == 0){
         *colour = 1;
         turn_left(ant);
-        //move_forward(&ant1);
+        move_forward(ant);
     }
     else {
         *colour = 0;
         turn_right(ant);
-        //move_forward(&ant1);
+        move_forward(ant);
     }
-    printf("switched colour = %d\n", *colour);
+    //printf("switched colour = %d\n", *colour);
 }
 
 //void apply_rule_general(colour *colour, ant *ant, rule *rule){}

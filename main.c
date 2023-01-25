@@ -3,11 +3,16 @@
 #include "visualiser.h"
 
 
-struct ant ant1 = {10,15,RIGHT};
-enum colour start_colour = WHITE;
+struct ant ant1 = {};
+enum colour start_colour;
+enum direction d;
 
 int main (){
-    printf("Hello \n");
-    //start_visualisation(&ant1);
+    do{
+        start_visualisation(&ant1);
+        visualise_and_advance(&ant1);
+    }
+    while(not_quit());
+    
     return 0;
 }
