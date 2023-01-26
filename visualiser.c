@@ -7,8 +7,9 @@
 #define cell_under_ant cell_at(ant->y, ant->x)
 cell *cells;
 
-cell* cell_at(int y, int x) {
-   ;
+cell* cell_at(int y, int x) 
+ {
+  return &cells[x + (y*max_y)];
 }
 
 
