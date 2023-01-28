@@ -8,10 +8,11 @@
 
 cell *cells;
 
-cell* cell_at(int y, int x) 
- {
+cell* cell_at(int y, int x)
+{
   return &cells[(max_y*y) + x];
 }
+
 
 void start_visualisation(struct ant* ant) {
   setlocale(LC_ALL, "");
