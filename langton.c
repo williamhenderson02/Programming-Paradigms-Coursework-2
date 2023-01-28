@@ -1,65 +1,62 @@
 #include <stdio.h>
 #include "langton.h"
+#include "visualiser.h"
+
+cell* cells;
 
 void turn_left(struct ant *ant){
-    //printf("direction = %d\n",ant->direction);
-    if(ant->direction  == 0)
-        ant->direction = 2;
-    else if(ant->direction  == 1)
-        ant->direction = 3;
-    else if(ant->direction  == 2)
-        ant->direction = 1;
+    if(ant->direction  == UP)
+        ant->direction = LEFT;
+    else if(ant->direction  == DOWN)
+        ant->direction = RIGHT;
+    else if(ant->direction  == LEFT)
+        ant->direction = DOWN;
     else
-        ant->direction = 0;
-    //printf("direction = %d\n", ant->direction);
+        ant->direction = UP;
 }
 
 void turn_right(struct ant *ant){
-    //printf("direction = %d\n",ant->direction);
-    if(ant->direction  == 0){
-        ant->direction = 3;
+    if(ant->direction  == UP){
+        ant->direction = RIGHT;
     }
-    else if(ant->direction  == 1){
-        ant->direction = 2;
+    else if(ant->direction  == DOWN){
+        ant->direction = LEFT;
     }
-    else if(ant->direction  == 2){
-        ant->direction = 0;
+    else if(ant->direction  == LEFT){
+        ant->direction = UP;
     }
     else {
-        ant->direction = 1;
+        ant->direction = DOWN;
     }
-    //printf("direction = %d\n", ant->direction);
 }
 
 void move_forward(struct ant *ant){
-    //printf("x = %d y = %d\n", ant->x, ant->y);
-    if(ant->direction == 0){
-        ant->y += 1;
-    }
-    else if(ant->direction == 1){
+    if(ant->direction == UP){
         ant->y -= 1;
     }
-    else if(ant->direction == 2){
+    else if(ant->direction == DOWN){
+        ant->y += 1;
+    }
+    else if(ant->direction == LEFT){
         ant->x -= 1;
     }
     else {
         ant->x += 1;
     }
-    //printf("x = %d y = %d\n", ant->x, ant->y);
 }
 
 
 void apply_rule(enum colour *colour, struct ant *ant){
-    //printf("colour = %d\n", *colour);
-    if(*colour == 0){
-        *colour = 1;
-        turn_left(ant);
+    if(*colour == WHITE){
+        turn_right(ant);
+        *colour = BLACK;
+        //cells[(max_y*ant->y) + ant->x] = 1;
     }
     else {
-        *colour = 0;
-        turn_right(ant);
+        turn_left(ant);
+        *colour = WHITE;
+        //cells[ant->x + (max_y * ant->y)] = 0;
     }
-    //printf("switched colour = %d\n", *colour);
 }
 
 //void apply_rule_general(colour *colour, ant *ant, rule *rule){}

@@ -5,13 +5,13 @@
 #include "langton.h"
 
 #define cell_under_ant cell_at(ant->y, ant->x)
+
 cell *cells;
 
 cell* cell_at(int y, int x) 
  {
-  return &cells[x + (y*max_y)];
+  return &cells[(max_y*y) + x];
 }
-
 
 void start_visualisation(struct ant* ant) {
   setlocale(LC_ALL, "");
