@@ -10,7 +10,7 @@ cell *cells;
 
 cell* cell_at(int y, int x)
 {
-  return &cells[(max_y*y) + x];
+  return &cells[(max_x*x) + y];
 }
 
 void start_visualisation(struct ant* ant) {
@@ -27,41 +27,42 @@ void start_visualisation(struct ant* ant) {
 }
 
 void visualise_and_advance(struct ant* ant) {
-      /* Draw cells and ant */
-      for (int y=0; y<max_y; y++)
+   /* Draw cells and ant */
+   for (int y=0; y<max_y; y++)
+   {
+      for (int x=0; x<max_x; x++)
       {
-         for (int x=0; x<max_x; x++)
-         {
-            mvprintw(y,x,
-               ant_is_at(y,x)
-                 ? direction_to_s(ant->direction)
-                 : *cell_at(y,x) == WHITE
-                    ? "█"
-                    : " "
-            );
-         }
+         mvprintw(y,x,
+            ant_is_at(y,x)
+               ? direction_to_s(ant->direction)
+               : *cell_at(y,x) == WHITE
+                  ? "█"
+                  : " "
+         );
       }
-      refresh();
-      
-      /* Advance to next step */
-      apply_rule(cell_under_ant, ant);
-      move_forward(ant);
+   }
+   refresh();
+   
+   /* Advance to next step */
+   apply_rule(cell_under_ant, ant);
 
-       if(ant->x < 0){
-         ant->x = max_x - 1;
-      }
+      if(ant->x < 0){
+      ant->x = max_x - 1;
+   }
 
-      if(ant->y < 0){
-         ant->y = max_y - 1;
-      }
+   if(ant->y < 0){
+      ant->y = max_y - 1;
+   }
 
-      if(ant->x == max_x){
-         ant->x = 0;
-      }
+   if(ant->x == max_x){
+      ant->x = 0;
+   }
 
-      if(ant->y == max_y){
-         ant->y = 0;
-      }
+   if(ant->y == max_y){
+      ant->y = 0;
+   }
+
+   move_forward(ant);
 }
 
 // Check if the user has input "q" to quit
