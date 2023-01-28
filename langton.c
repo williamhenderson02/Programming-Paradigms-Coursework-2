@@ -50,10 +50,12 @@ void apply_rule(enum colour *colour, struct ant *ant){
     if(*colour == WHITE){
         turn_right(ant);
         *colour = BLACK;
+        cells[(max_y*ant->y + ant->x)] = *colour;
     }
     else {
         turn_left(ant);
         *colour = WHITE;
+        cells[(max_y*ant->y + ant->x)] = *colour;
     }
 }
 

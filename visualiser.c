@@ -13,7 +13,6 @@ cell* cell_at(int y, int x)
   return &cells[(max_y*y) + x];
 }
 
-
 void start_visualisation(struct ant* ant) {
   setlocale(LC_ALL, "");
 
@@ -29,7 +28,6 @@ void start_visualisation(struct ant* ant) {
 
 void visualise_and_advance(struct ant* ant) {
       /* Draw cells and ant */
-      
       for (int y=0; y<max_y; y++)
       {
          for (int x=0; x<max_x; x++)
@@ -37,7 +35,7 @@ void visualise_and_advance(struct ant* ant) {
             mvprintw(y,x,
                ant_is_at(y,x)
                  ? direction_to_s(ant->direction)
-                 : cell_at(y,x)
+                 : *cell_at(y,x) == WHITE
                     ? "█"
                     : " "
             );
