@@ -13,6 +13,7 @@ struct ant
 struct rule
 {
     char* rules;
+    int next_state;
 };
 
 #define ant_is_at(posy, posx) ((ant->y == posy) && (ant->x == posx))

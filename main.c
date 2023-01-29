@@ -49,8 +49,10 @@ int main(int argc, char *argv[]){
             }
 
         }
+        //rule.states = strlen(input);
         rule.rules = input;
-        start_visualisation(&ant);
+        
+        /*start_visualisation(&ant);
     do{
         for(i = 0; i < 100; i++){
         visualise_and_advance(&ant);
@@ -58,7 +60,7 @@ int main(int argc, char *argv[]){
     }
     while(not_quit());  
 
-    end_visualisation();
+    end_visualisation();*/
     }
     return 0;
 }
