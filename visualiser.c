@@ -6,6 +6,9 @@
 
 #define cell_under_ant cell_at(ant->y, ant->x)
 
+extern int global_argc;
+extern char **global_argv;
+
 cell *cells;
 
 cell* cell_at(int y, int x)
@@ -15,7 +18,7 @@ cell* cell_at(int y, int x)
 
 void start_visualisation(struct ant* ant) {
   setlocale(LC_ALL, "");
-  
+
    initscr();
    curs_set(FALSE); 
    max_x = getmaxx(stdscr);
@@ -44,7 +47,13 @@ void visualise_and_advance(struct ant* ant) {
    refresh();
    
    /* Advance to next step */
-   apply_rule(cell_under_ant, ant);
+   if(global_argc < 2){
+       apply_rule(cell_under_ant, ant);
+   }
+  
+   /*else{
+      apply_rule_general();
+   }*/
 
       if(ant->x < 0){
       ant->x = max_x - 1;

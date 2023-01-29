@@ -5,23 +5,24 @@
 #include "langton.h"
 #include "visualiser.h"
 
-int g_argc;
-char **g_argv;
+int global_argc;
+char **global_argv;
 
 struct ant ant = {};
 enum colour colour;
 enum direction d;
+struct rule rule = {};
 
 int main(int argc, char *argv[]){
-    g_argc = argc;
-    g_argv = argv;
-    int i = 0;
+    global_argc = argc;
+    global_argv = argv;
+    int i;
     char temp;
 
-    if(g_argc < 2){
+    if(global_argc < 2){
     start_visualisation(&ant);
     do{
-        for(int i = 0; i < 100; i++){
+        for(i = 0; i < 100; i++){
         visualise_and_advance(&ant);
         }
     }
@@ -29,28 +30,29 @@ int main(int argc, char *argv[]){
 
     end_visualisation();
     }
-    else if(g_argc > 2){
+    else if(global_argc > 2){
         printf("Too many arguments given. The program should be invoked as './ant {rule}");
     }
     else{
-        char *rule = g_argv[1];
-        for(int i = 0; i < strlen(rule); i++){
-            if(rule[i]!= 'l' && rule[i] != 'L' && rule[i] != 'r' && rule[i] != 'R'){
+        char *input = global_argv[1];
+        for(int i = 0; i < strlen(input); i++){
+            if(input[i]!= 'l' && input[i] != 'L' && input[i] != 'r' && input[i] != 'R'){
             printf("{rule} must only include 'L' and 'R'");
             return 0;
             }
             else{
-                while (rule[i]) {
-                temp = rule[i];
-                rule[i] = toupper(temp);
+                while (input[i]) {
+                temp = input[i];
+                input[i] = toupper(temp);
                 i++;
     }
             }
 
         }
+        rule.rules = input;
         start_visualisation(&ant);
     do{
-        for(int i = 0; i < 100; i++){
+        for(i = 0; i < 100; i++){
         visualise_and_advance(&ant);
         }
     }

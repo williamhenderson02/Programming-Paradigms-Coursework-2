@@ -57,4 +57,6 @@ void apply_rule(enum colour *colour, struct ant *ant){
     }
 }
 
-//void apply_rule_general(colour *colour, ant *ant, rule *rule){}
+void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule){
+    
+}
