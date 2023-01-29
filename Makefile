@@ -21,4 +21,4 @@ libant.so: $(OBJFILES)
 
 
 clean:
-	rm -f $(OBJFILES) $(TARGET) *~
+	rm -f $(OBJFILES) $(TARGET) libant.so*~
