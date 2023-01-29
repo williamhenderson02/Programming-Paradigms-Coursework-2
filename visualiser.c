@@ -15,7 +15,7 @@ cell* cell_at(int y, int x)
 
 void start_visualisation(struct ant* ant) {
   setlocale(LC_ALL, "");
-
+  
    initscr();
    curs_set(FALSE); 
    max_x = getmaxx(stdscr);
