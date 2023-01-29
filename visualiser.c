@@ -72,6 +72,7 @@ bool not_quit() {
 
 void end_visualisation() {
    free(cells);
+   cells = NULL;
    endwin();
 }
 

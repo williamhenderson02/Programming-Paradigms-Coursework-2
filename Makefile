@@ -10,10 +10,14 @@ TARGET = ant
 
 #$(TARGET): $(OBJFILES)
 #	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
+
 all: $(TARGET)
 
 $(TARGET): $(OBJFILES)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJFILES) $(LDFLAGS)
+
+libant.so: $(OBJFILES)
+	$(CC) -shared -o libant.so $(OBJFILES) $(LDFLAGS)
 
 
 clean:
