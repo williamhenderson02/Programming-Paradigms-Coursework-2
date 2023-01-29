@@ -11,84 +11,78 @@ extern char **global_argv;
 
 cell *cells;
 
-cell* cell_at(int y, int x)
-{
+cell* cell_at(int y, int x) {
   return &cells[(max_x*x) + y];
 }
 
 void start_visualisation(struct ant* ant) {
   setlocale(LC_ALL, "");
-
-   initscr();
-   curs_set(FALSE); 
-   max_x = getmaxx(stdscr);
-   max_y = getmaxy(stdscr);
-   cells = calloc(max_y*max_x, sizeof(cell));
-   ant->x = max_x/2;
-   ant->y = max_y/2;
-   ant->direction = RIGHT;
+  initscr();
+  curs_set(FALSE);
+  max_x = getmaxx(stdscr);
+  max_y = getmaxy(stdscr);
+  cells = calloc(max_y*max_x, sizeof(cell));
+  ant->x = max_x/2;
+  ant->y = max_y/2;
+  ant->direction = RIGHT;
 }
 
 void visualise_and_advance(struct ant* ant) {
-   /* Draw cells and ant */
-   for (int y=0; y<max_y; y++)
-   {
-      for (int x=0; x<max_x; x++)
-      {
-         mvprintw(y,x,
-            ant_is_at(y,x)
+  /* Draw cells and ant */
+  for (int y=0; y < max_y; y++) {
+     for (int x=0; x < max_x; x++) {
+         mvprintw(y, x,
+            ant_is_at(y, x)
                ? direction_to_s(ant->direction)
-               : *cell_at(y,x) == WHITE
+               : *cell_at(y, x) == WHITE
                   ? "█"
-                  : " "
-         );
+                  : " ");
       }
-   }
-   refresh();
-   
-   /* Advance to next step */
-   if(global_argc < 2){
-       apply_rule(cell_under_ant, ant);
-   }
-  
+  }
+  refresh();
+
+  /* Advance to next step */
+  if (global_argc < 2) {
+      apply_rule(cell_under_ant, ant);
+  }
+
    /*else{
       apply_rule_general();
    }*/
 
-      if(ant->x < 0){
+      if (ant->x < 0) {
       ant->x = max_x - 1;
-   }
+  }
 
-   if(ant->y < 0){
+  if (ant->y < 0) {
       ant->y = max_y - 1;
-   }
+  }
 
-   if(ant->x == max_x){
+  if (ant->x == max_x) {
       ant->x = 0;
-   }
+  }
 
-   if(ant->y == max_y){
+  if (ant->y == max_y) {
       ant->y = 0;
-   }
+  }
 
-   move_forward(ant);
+  move_forward(ant);
 }
 
 // Check if the user has input "q" to quit
 bool not_quit() {
-   return 'q' != getch();
+  return 'q' != getch();
 }
 
 void end_visualisation() {
-   free(cells);
-   cells = NULL;
-   endwin();
+  free(cells);
+  cells = NULL;
+  endwin();
 }
 
 const char* direction_to_s(enum direction d) {
-   return UP   == d ? "^" :
+  return UP   == d ? "^" :
           DOWN == d ? "v" :
           LEFT == d ? "<" :
           /* else */  ">" ;
 }
-
