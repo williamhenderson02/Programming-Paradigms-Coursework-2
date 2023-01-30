@@ -24,9 +24,8 @@ int main(int argc, char *argv[]) {
     global_argc = argc;
     global_argv = argv;
 
-    // initialising variables
+    // initialising index variable
     int i;
-    char temp;
 
     // Checks the number of command line arguments
     if (global_argc < 2) {
@@ -48,7 +47,7 @@ int main(int argc, char *argv[]) {
     } else if (global_argc > 2) {
         // if more too many arguments passed an error is thrown
         printf("Too many arguments given."
-                " The program should be invoked as './ant {rule}");
+                " The program should be invoked as './ant {rule} ");
 
     // otherwise the advanced variant is simulated
     } else {
@@ -58,17 +57,13 @@ int main(int argc, char *argv[]) {
             // if the rule includes incorrect letters an error is thrown
             if (input[i]!= 'l' && input[i] != 'L' && input[i] != 'r' &&
             input[i] != 'R') {
-                printf("{rule} must only include 'L' and 'R'");
+                printf("{rule} must only include 'L' and 'R' ");
                 return 0;
-
-            // otherwise the rule is converted to uppercase
-            } else {
-                while (input[i]) {
-                    temp = input[i];
-                    input[i] = toupper(temp);
-                    i++;
-                }
             }
+        }
+        // otherwise the rule is converted to uppercase
+        for (int i = 0; i < strlen(input); i++) {
+        input[i] = toupper(input[i]);
         }
 
     // user input set as rule in struct
