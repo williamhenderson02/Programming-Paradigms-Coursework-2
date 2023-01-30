@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
     // advanced variation simulated while user does not quit
     do {
         for (i = 0; i < 100; i++) {
-            visualise_and_advance(&ant);
+            general_visualise_and_advance(&ant, &rule);
         }
     }
     while (not_quit());
@@ -89,6 +89,6 @@ int main(int argc, char *argv[]) {
     end_visualisation();
     }
 
-    // normal 0 return at end of main functio
+    // normal 0 return at end of main function
     return 0;
 }

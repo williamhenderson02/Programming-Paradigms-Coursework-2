@@ -5,6 +5,7 @@
 #include "visualiser.h"
 #include "langton.h"
 
+// macro to find position of ant
 #define cell_at(y,x) (cells [(max_x*y) + x])
 
 // function like macro to find position of ant
@@ -63,13 +64,54 @@ void visualise_and_advance(struct ant* ant) {
   refresh();
 
   /* Advance to next step */
-  if (global_argc < 2) {
-      apply_rule(&cell_under_ant, ant);
+  apply_rule(&cell_under_ant, ant);
+  
+
+  // torus implemenation
+  /* check if ant position is higher than max or lower 
+  than min and move it accordingly */
+  if (ant->x < 0) {
+  ant->x = max_x - 1;
   }
 
-   /*else{
-      apply_rule_general();
-   }*/
+  if (ant->y < 0) {
+      ant->y = max_y - 1;
+  }
+
+  if (ant->x == max_x) {
+      ant->x = 0;
+  }
+
+  if (ant->y == max_y) {
+      ant->y = 0;
+  }
+
+  // call function to move ant forward
+  move_forward(ant);
+}
+
+// function to visualise the ant's behaviour
+void general_visualise_and_advance(struct ant* ant, struct rule* rule) {
+  /* Draw cells and ant */
+  // for each cell check if the ant is at that cell
+  for (int y=0; y < max_y; y++) {
+     for (int x=0; x < max_x; x++) {
+         // print cell colour to screen
+         mvprintw(y, x,
+            ant_is_at(y, x)
+               // if ant is at current cell put ant direction on that cell
+               ? direction_to_s(ant->direction)
+               // if pointer to cell is white display white
+               : cell_at(y, x)
+                  ? "█"
+                  // otherwise display black
+                  : " ");
+      }
+  }
+  refresh();
+
+  /* Advance to next step */
+  apply_rule_general(&cell_under_ant, ant, rule);
 
   // torus implemenation
   /* check if ant position is higher than max or lower 

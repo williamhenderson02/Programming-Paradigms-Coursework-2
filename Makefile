@@ -19,6 +19,8 @@ $(TARGET): $(OBJFILES)
 libant.so: $(OBJFILES)
 	$(CC) -shared -o libant.so $(OBJFILES) $(LDFLAGS)
 
+run: ant
+		./ant
 
 clean:
 	rm -f $(OBJFILES) $(TARGET) libant.so*~
