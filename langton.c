@@ -3,9 +3,6 @@
 #include "langton.h"
 #include "visualiser.h"
 
-// cell pointer to cells
-cell* cells;
-
 // function to make the ant turn left
 void turn_left(struct ant *ant) {
     // ant direction changed 90 degrees anti-clockwise
