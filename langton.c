@@ -48,15 +48,27 @@ void move_forward(struct ant *ant) {
 // function to apply rule to ant
 void apply_rule(enum colour *colour, struct ant *ant) {
     // checks colour of cell ant currently on, turns and flips colour
-    if (*colour == WHITE) {
+    if (*colour == A) {
         turn_right(ant);
-        *colour = BLACK;
+        *colour = B;
     } else {
         turn_left(ant);
-        *colour = WHITE;
+        *colour = A;
     }
 }
 
 // function to apply advanced variant to ant
 void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule) {
+    int index = *colour;
+    if (rule->rules[index] == 'R') {
+        turn_right(ant);
+    } else {
+        turn_left(ant);
+        *colour += 1;
+    }
+    if (index == (rule->states) - 1) {
+            *colour = 0;
+    } else {
+            *colour += 1;
+    }
 }

@@ -68,15 +68,16 @@ int main(int argc, char *argv[]) {
 
     // user input set as rule in struct
     rule.rules = input;
+    rule.states = strlen(input);
 
     // advanced variation started
     start_visualisation(&ant);
 
     // advanced variation simulated while user does not quit
     do {
-        for (i = 0; i < 100; i++) {
+        //for (i = 0; i < 100; i++) {
             general_visualise_and_advance(&ant, &rule);
-        }
+        //}
     }
     while (not_quit());
 

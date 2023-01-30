@@ -11,12 +11,13 @@ struct ant {
 
 struct rule {
     char* rules;
-    int next_state;
+    int states;
 };
 
 #define ant_is_at(posy, posx) ((ant->y == posy) && (ant->x == posx))
 
-enum colour { WHITE, BLACK };
+//enum colour { WHITE, BLACK };
+enum colour {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z};
 
 void turn_left(struct ant *ant);
 void turn_right(struct ant *ant);

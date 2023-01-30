@@ -8,6 +8,7 @@ static int max_x;
 static int max_y;
 
 typedef enum colour cell;
+//typedef enum colours cell2;
 
 void start_visualisation(struct ant* ant);
 void visualise_and_advance(struct ant* ant);

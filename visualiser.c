@@ -21,10 +21,6 @@ cell *cells;
 /* cell_at function which returns the address of 
 the cell the ant is currently at */
 
-//cell* cell_at(int y, int x) {
-  //return &cells[(max_x*y) + x];
-//}
-
 // function to start visualisation
 void start_visualisation(struct ant* ant) {
   // initialise screen
@@ -90,7 +86,7 @@ void visualise_and_advance(struct ant* ant) {
   move_forward(ant);
 }
 
-// function to visualise the ant's behaviour
+// function to visualise the n-state ant's behaviour
 void general_visualise_and_advance(struct ant* ant, struct rule* rule) {
   /* Draw cells and ant */
   // for each cell check if the ant is at that cell
