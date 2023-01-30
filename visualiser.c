@@ -5,6 +5,8 @@
 #include "visualiser.h"
 #include "langton.h"
 
+#define cell_at(y,x) (cells [(max_x*y) + x])
+
 // function like macro to find position of ant
 #define cell_under_ant cell_at(ant->y, ant->x)
 
@@ -17,9 +19,10 @@ cell *cells;
 
 /* cell_at function which returns the address of 
 the cell the ant is currently at */
-cell* cell_at(int y, int x) {
-  return &cells[(max_x*x) + y];
-}
+
+//cell* cell_at(int y, int x) {
+  //return &cells[(max_x*y) + x];
+//}
 
 // function to start visualisation
 void start_visualisation(struct ant* ant) {
@@ -51,7 +54,7 @@ void visualise_and_advance(struct ant* ant) {
                // if ant is at current cell put ant direction on that cell
                ? direction_to_s(ant->direction)
                // if pointer to cell is white display white
-               : *cell_at(y, x) == WHITE
+               : cell_at(y, x)
                   ? "█"
                   // otherwise display black
                   : " ");
@@ -61,7 +64,7 @@ void visualise_and_advance(struct ant* ant) {
 
   /* Advance to next step */
   if (global_argc < 2) {
-      apply_rule(cell_under_ant, ant);
+      apply_rule(&cell_under_ant, ant);
   }
 
    /*else{
