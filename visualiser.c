@@ -1,5 +1,5 @@
 // header files and libraries to be included
-#include <cursesw.h>
+#include <ncurses.h>
 #include <locale.h>
 #include <stdlib.h>
 #include "visualiser.h"
