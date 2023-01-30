@@ -6,7 +6,7 @@
 #include "langton.h"
 
 // macro to find position of ant
-#define cell_at(y,x) (cells [(max_x*y) + x])
+#define cell_at(y, x) (cells[(max_x * y) + x])
 
 // function like macro to find position of ant
 #define cell_under_ant cell_at(ant->y, ant->x)
@@ -61,7 +61,6 @@ void visualise_and_advance(struct ant* ant) {
 
   /* Advance to next step */
   apply_rule(&cell_under_ant, ant);
-  
 
   // torus implemenation
   /* check if ant position is higher than max or lower 
@@ -97,59 +96,60 @@ void general_visualise_and_advance(struct ant* ant, struct rule* rule) {
             ant_is_at(y, x)
                // if ant is at current cell put ant direction on that cell
                ? direction_to_s(ant->direction)
-               // if pointer to cell is white display white
+               // ternary operator cases for each possible cell state
+               // display corresponding state om screen
                : cell_at(y, x) == A
                   ? "A"
-                  : cell_at(y, x) == B
-                     ? "B"
-                     : cell_at(y,x) == C
-                        ? "C"
-                        : cell_at(y,x) == D
-                           ? "D"
-                           : cell_at(y,x) == E
-                              ? "E"
-                              : cell_at(y,x) == F
-                                 ? "F"
-                                 : cell_at(y, x) == G
-                                    ? "G"
-                                    : cell_at(y, x) == H
-                                       ? "H"
-                                       : cell_at(y,x) == I
-                                          ? "I"
-                                          : cell_at(y,x) == J
-                                             ? "J"
-                                             : cell_at(y,x) == K
-                                                ? "K"
-                                                : cell_at(y,x) == L
-                                                   ? "L"
-                                                      : cell_at(y, x) == M
-                                                      ? "M"
-                                                      : cell_at(y, x) == N
-                                                         ? "N"
-                                                         : cell_at(y,x) == O
-                                                            ? "O"
-                                                            : cell_at(y,x) == P
-                                                               ? "P"
-                                                               : cell_at(y,x) == Q
-                                                                  ? "Q"
-                                                                  : cell_at(y,x) == R
-                                                                     ? "R"
-                                                                     : cell_at(y, x) == S
-                                                                        ? "S"
-                                                                        : cell_at(y, x) == T
-                                                                           ? "T"
-                                                                           : cell_at(y,x) == U
-                                                                              ? "U"
-                                                                              : cell_at(y,x) == V
-                                                                                 ? "V"
-                                                                                 : cell_at(y,x) == W
-                                                                                    ? "W"
-                                                                                    : cell_at(y,x) == X
-                                                                                       ? "X"
-                                                                                       :cell_at(y,x) == Y
-                                                                                          ? "Y"
-                                                                                       // otherwise display black
-                                                                                          : "Z");
+               : cell_at(y, x) == B
+                  ? "B"
+               : cell_at(y, x) == C
+                  ? "C"
+               : cell_at(y, x) == D
+                  ? "D"
+               : cell_at(y, x) == E
+                  ? "E"
+               : cell_at(y, x) == F
+                  ? "F"
+               : cell_at(y, x) == G
+                  ? "G"
+               : cell_at(y, x) == H
+                  ? "H"
+               : cell_at(y, x) == I
+                  ? "I"
+               : cell_at(y, x) == J
+                  ? "J"
+               : cell_at(y, x) == K
+                  ? "K"
+               : cell_at(y, x) == L
+                  ? "L"
+               : cell_at(y, x) == M
+                  ? "M"
+               : cell_at(y, x) == N
+                  ? "N"
+               : cell_at(y, x) == O
+                  ? "O"
+               : cell_at(y, x) == P
+                  ? "P"
+               : cell_at(y, x) == Q
+                  ? "Q"
+               : cell_at(y, x) == R
+                  ? "R"
+               : cell_at(y, x) == S
+                  ? "S"
+               : cell_at(y, x) == T
+                  ? "T"
+               : cell_at(y, x) == U
+                  ? "U"
+               : cell_at(y, x) == V
+                  ? "V"
+               : cell_at(y, x) == W
+                  ? "W"
+               : cell_at(y, x) == X
+                  ? "X"
+               :cell_at(y, x) == Y
+                  ? "Y"
+               // otherwise display Z
+                  : "Z");
       }
   }
   refresh();

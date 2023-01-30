@@ -79,9 +79,7 @@ int main(int argc, char *argv[]) {
 
     // advanced variation simulated while user does not quit
     do {
-        //for (i = 0; i < 4; i++) {
-            general_visualise_and_advance(&ant, &rule);
-        //}
+        general_visualise_and_advance(&ant, &rule);
     }
     while (not_quit());
 

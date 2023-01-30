@@ -59,14 +59,19 @@ void apply_rule(enum colour *colour, struct ant *ant) {
 
 // function to apply advanced variant to ant
 void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule) {
+    // set the index as the number that the colour is poining to in enum colour
     int index = *colour;
+
+    // index rules to find turn decision of current state
     if (rule->rules[index] == 'R') {
         turn_right(ant);
     } else {
         turn_left(ant);
     }
+    // if the ant is at the last state return to first state
     if (index == (rule->states) - 1) {
             *colour = 0;
+    // otherwise set ant to next state
     } else {
             *colour += 1;
     }

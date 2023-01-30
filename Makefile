@@ -20,7 +20,7 @@ libant.so: $(OBJFILES)
 	$(CC) -shared -o libant.so $(OBJFILES) $(LDFLAGS)
 
 run: ant
-		./ant
+		./ant LLRR
 
 clean:
 	rm -f $(OBJFILES) $(TARGET) libant.so*~
