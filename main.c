@@ -6,10 +6,6 @@
 #include "langton.h"
 #include "visualiser.h"
 
-// creating global instances for command line input arguments
-int global_argc;
-char **global_argv;
-
 // initialising an ant, colours, direction and rule
 struct ant ant = {};
 enum colour colour;
@@ -20,15 +16,11 @@ struct rule rule = {};
 /* This takes arguments argc and argv which are the number of command line arguments
 and list of command line arguments respectively */
 int main(int argc, char *argv[]) {
-    // setting globals
-    global_argc = argc;
-    global_argv = argv;
-
     // initialising index variable
     int i;
 
     // Checks the number of command line arguments
-    if (global_argc < 2) {
+    if (argc < 2) {
     // if the basic variant is used the visualisation is started
     start_visualisation(&ant);
 
@@ -42,7 +34,7 @@ int main(int argc, char *argv[]) {
     end_visualisation();
 
     // checks number of command line arguments
-    } else if (global_argc > 2) {
+    } else if (argc > 2) {
         // if more too many arguments passed an error is thrown
         printf("Too many arguments given."
                 " The program should be invoked as './ant {rule} ");
@@ -50,7 +42,7 @@ int main(int argc, char *argv[]) {
     // otherwise the advanced variant is simulated
     } else {
         // user entered rule is iterated through
-        char *input = global_argv[1];
+        char *input = argv[1];
         if (strlen(input) > 26) {
             printf("Rule cannot be more than 26 states ");
             return 0;

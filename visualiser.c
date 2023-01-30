@@ -11,10 +11,6 @@
 // function like macro to find position of ant
 #define cell_under_ant cell_at(ant->y, ant->x)
 
-// global variable for command line arguments from main.c
-extern int global_argc;
-extern char **global_argv;
-
 // cell pointer to cells
 cell *cells;
 
