@@ -53,6 +53,10 @@ int main(int argc, char *argv[]) {
     } else {
         // user entered rule is iterated through
         char *input = global_argv[1];
+        if (strlen(input) > 26) {
+            printf("Rule cannot be more than 26 states ");
+            return 0;
+        }
         for (int i = 0; i < strlen(input); i++) {
             // if the rule includes incorrect letters an error is thrown
             if (input[i]!= 'l' && input[i] != 'L' && input[i] != 'r' &&
@@ -75,7 +79,7 @@ int main(int argc, char *argv[]) {
 
     // advanced variation simulated while user does not quit
     do {
-        //for (i = 0; i < 100; i++) {
+        //for (i = 0; i < 4; i++) {
             general_visualise_and_advance(&ant, &rule);
         //}
     }

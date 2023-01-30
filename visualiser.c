@@ -98,10 +98,58 @@ void general_visualise_and_advance(struct ant* ant, struct rule* rule) {
                // if ant is at current cell put ant direction on that cell
                ? direction_to_s(ant->direction)
                // if pointer to cell is white display white
-               : cell_at(y, x)
-                  ? "█"
-                  // otherwise display black
-                  : " ");
+               : cell_at(y, x) == A
+                  ? "A"
+                  : cell_at(y, x) == B
+                     ? "B"
+                     : cell_at(y,x) == C
+                        ? "C"
+                        : cell_at(y,x) == D
+                           ? "D"
+                           : cell_at(y,x) == E
+                              ? "E"
+                              : cell_at(y,x) == F
+                                 ? "F"
+                                 : cell_at(y, x) == G
+                                    ? "G"
+                                    : cell_at(y, x) == H
+                                       ? "H"
+                                       : cell_at(y,x) == I
+                                          ? "I"
+                                          : cell_at(y,x) == J
+                                             ? "J"
+                                             : cell_at(y,x) == K
+                                                ? "K"
+                                                : cell_at(y,x) == L
+                                                   ? "L"
+                                                      : cell_at(y, x) == M
+                                                      ? "M"
+                                                      : cell_at(y, x) == N
+                                                         ? "N"
+                                                         : cell_at(y,x) == O
+                                                            ? "O"
+                                                            : cell_at(y,x) == P
+                                                               ? "P"
+                                                               : cell_at(y,x) == Q
+                                                                  ? "Q"
+                                                                  : cell_at(y,x) == R
+                                                                     ? "R"
+                                                                     : cell_at(y, x) == S
+                                                                        ? "S"
+                                                                        : cell_at(y, x) == T
+                                                                           ? "T"
+                                                                           : cell_at(y,x) == U
+                                                                              ? "U"
+                                                                              : cell_at(y,x) == V
+                                                                                 ? "V"
+                                                                                 : cell_at(y,x) == W
+                                                                                    ? "W"
+                                                                                    : cell_at(y,x) == X
+                                                                                       ? "X"
+                                                                                       :cell_at(y,x) == Y
+                                                                                          ? "Y"
+                                                                                       // otherwise display black
+                                                                                          : "Z");
       }
   }
   refresh();

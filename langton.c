@@ -64,7 +64,6 @@ void apply_rule_general(enum colour *colour, struct ant *ant, struct rule *rule)
         turn_right(ant);
     } else {
         turn_left(ant);
-        *colour += 1;
     }
     if (index == (rule->states) - 1) {
             *colour = 0;
