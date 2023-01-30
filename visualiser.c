@@ -50,11 +50,11 @@ void visualise_and_advance(struct ant* ant) {
             ant_is_at(y, x)
                // if ant is at current cell put ant direction on that cell
                ? direction_to_s(ant->direction)
-               // if pointer to cell is white display white
+               // if pointer to cell is balck display black
                : cell_at(y, x)
-                  ? "█"
-                  // otherwise display black
-                  : " ");
+                  ? " "
+                  // otherwise display white
+                  : "█");
       }
   }
   refresh();
