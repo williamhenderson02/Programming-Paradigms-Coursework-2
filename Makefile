@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall
-LDFLAGS = -lncurses
+LDFLAGS = -lncursesw
 OBJFILES =langton.o visualiser.o main.o
 TARGET = ant
 #DEPS = langton.h visualiser.h

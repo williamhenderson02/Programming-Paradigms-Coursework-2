@@ -10,4 +10,4 @@ To use other rules either change the rule in the make file and use "make run" or
 
 The basic variant will be ran if no rule supplied from makefile or command line
 
-Letters A and B are used to visualise the basic variant and letters A-Z for the advanced variant
+White and Black are used to visualise the basic variant and letters A-Z for the advanced variant
