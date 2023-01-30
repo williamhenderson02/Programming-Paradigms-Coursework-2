@@ -34,9 +34,7 @@ int main(int argc, char *argv[]) {
 
     // while the user does not quit the simulation is ran
     do {
-        for (i = 0; i < 100; i++) {
         visualise_and_advance(&ant);
-        }
     }
     while (not_quit());
 
